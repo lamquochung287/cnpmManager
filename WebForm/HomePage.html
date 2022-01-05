@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Trang chủ đặt hàng dành cho đại lý</title>
+    <meta charset="utf-8" />
+    
+    <link rel="stylesheet" href="HomePage.css">
+
+    <script type="text/javascript">
+        function datmua(){
+            var idmathang = document.getElementById('option').value;
+            var tendaily = document.getElementById('tendaily').value;
+            var sdt = document.getElementById('sodienthoai').value;
+            var date = document.getElementById('ngaydathang').value;
+            var hinhthucthanhtoan = document.getElementById('optionthanhtoan').value;
+            var price = document.getElementById('price').value;
+            var soluong = document.getElementById('number').value;
+            
+            
+            //kiểm tra thông tin có trống k
+            if(tendaily == "" || sdt == "" || date == "" || sdt.length != 10 || idmathang == "None" || hinhthucthanhtoan == "None" || soluong == ""){
+                alert("Vui lòng điền đầy đủ thông tin")
+            }
+            
+        }
+
+        function show_price(){
+            var idmathang = document.getElementById("option").value;
+            var soluong = document.getElementById("number").value;
+            var sum;
+            if(idmathang == "iphone 6s"){
+                price = 1200;
+            }
+            if(idmathang == "iphone 7s"){
+                price = 2200;
+                
+            }
+            if(idmathang == "iphone 8s"){
+                price = 3200;
+                
+            }
+            if(idmathang == "iphone Xs"){
+                price = 4200;
+                
+            }
+            if(idmathang == "iphone 6s plus"){
+                price = 1700;
+                
+            }
+            if(idmathang == "iphone 7s plus"){
+                price = 2700;
+                
+            }
+            if(idmathang == "iphone 8s plus"){
+                price = 3700;
+                
+            }
+            sum = price * soluong;
+            document.getElementById("price").value = sum;
+        }
+    </script>
+
+</head>
+<body>
+    <div class="topnav">
+        <a href="HomePage.html">Home</a></li>
+    </div>
+    <h1>FORM ĐẶT HÀNG</h1>
+    <form action="insert.php" method="post" name="formdathang" >
+    <table border="0" cellspacing="2" cellpadding="10" width="50%" style="background-color:#ffffff">
+            <tr>
+                <td>
+                    Tên đại lý: 
+                </td>
+                <td>
+                    <input type="text" id="tendaily" name="tendaily" name="tendaily" placeholder="Tên đại lý" required/>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    Địa chỉ:
+                </td>
+                <td>
+                    <input type="text" id="diachi" name="diachi" placeholder="Địa chỉ đại lý" required/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Số điện thoại:
+                </td>
+                <td>
+                    <input type="text" id="sodienthoai" name="sodienthoai" name="sdt" placeholder="Số điện thoại liên hệ(10 số)" minlength="10" maxlength="10" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>Ngày đặt hàng</td>
+                <td>
+                    <input type="date" id="ngaydathang" name="ngaydathang" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Đặt mua mặt hàng:
+                </td>
+                <td>
+                    <select id="option" name="option" onchange="show_price()" style="width: 45%; height: 25px; text-align: center;">
+                        <option value="None">---Chọn mặt hàng---</option>
+                        <option value="iphone 6s">iphone 6s</option>
+                        <option value="iphone 6s plus">iphone 6s plus</option>
+                        <option value="iphone 7s">iphone 7s</option>
+                        <option value="iphone 7s plus">iphone 7s plus</option>
+                        <option value="iphone 8s">iphone 8s</option>
+                        <option value="iphone 8s plus">iphone 8s plus</option>
+                        <option value="iphone Xs">iphone Xs</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Số lượng:
+                </td>
+                <td>
+                    <select id="number" name="number" onchange="show_price()" style="width: 45%; height: 25px; text-align: center;" >
+                        <option value="None">---Chọn số lượng---</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Thành Tiền:
+                </td>
+                <td>
+                    <input type="number" READONLY name="price" id="price">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Chọn hình thức thanh toán:
+                </td>
+                <td>
+                    <select id="optionthanhtoan" name="optionthanhtoan" style="width: 45%; height: 25px; text-align: center;">
+                        <option value="None">---Chọn hình thức thanh toán---</option>
+                        <option value="Momo">Momo</option>
+                        <option value="chuyển khoản">Chuyển khoản</option>
+                        <option value="tiền mặt">Tiền mặt</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <button type="submit" onclick="datmua()">Đặt Hàng</button>
+    </form>
+
+</body>
